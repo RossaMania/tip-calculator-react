@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Header from './Header';
+import BillAmount from './BillAmount';
 
 const TipCalculator = () => {
   const [bill, setBill] = useState(0);
@@ -43,6 +44,7 @@ const TipCalculator = () => {
   return (
     <div>
       <Header />
+      <BillAmount bill={bill} handleBillChange={handleBillChange}/>
     </div>
   );
 

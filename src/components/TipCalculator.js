@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
-import Header from './Header';
-import BillAmount from './BillAmount';
+import React, { useState } from "react";
+import Header from "./Header";
+import BillAmount from "./BillAmount";
+import ServiceRating from "./ServiceRating";
 
 const TipCalculator = () => {
   const [bill, setBill] = useState(0);
+  const [service, setService] = useState(5);
   const [tip, setTip] = useState(0);
 
-    const handleBillChange = (event) => {
+  const handleBillChange = (event) => {
     setBill(Number(event.target.value));
+    console.log(bill);
   };
 
-  const calculateTip = () => {
+   const handleServiceChange = (event) => {
+    event.preventDefault();
+     setService(Number(event.target.value));
+     console.log(service);
+     calculateTip();
+   };
 
-    const service = Number(
-      document.querySelector('input[name="service"]:checked').value
-    );
+  const calculateTip = () => {
 
     let X;
     if (service <= 3) {
@@ -31,23 +37,28 @@ const TipCalculator = () => {
 
     const tipAmount = Number((bill * X).toFixed(2));
     setTip(tipAmount);
+    console.log(tipAmount);
 
   };
 
   const calculateTotal = () => {
-
     const total = bill + tip;
+    console.log(total);
     return total;
-
   };
 
   return (
     <div>
       <Header />
-      <BillAmount bill={bill} handleBillChange={handleBillChange}/>
+      <BillAmount bill={bill} handleBillChange={handleBillChange} />
+      <ServiceRating handleServiceChange={handleServiceChange} />
+      <div>
+        <button type="Submit" id="submit" onClick={calculateTotal}>
+          Calculate Total
+        </button>
+      </div>
     </div>
   );
-
-}
+};
 
 export default TipCalculator;

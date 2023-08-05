@@ -1,27 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import BillAmount from "./BillAmount";
 import ServiceRating from "./ServiceRating";
+import Total from "./Total";
 
 const TipCalculator = () => {
   const [bill, setBill] = useState(0);
-  const [service, setService] = useState(5);
+  const [service, setService] = useState(10);
   const [tip, setTip] = useState(0);
+  const [total, setTotal] = useState(0);
 
   const handleBillChange = (event) => {
     setBill(Number(event.target.value));
     console.log(bill);
   };
 
-   const handleServiceChange = (event) => {
+  const handleServiceChange = (event) => {
     event.preventDefault();
-     setService(Number(event.target.value));
-     console.log(service);
-     calculateTip();
-   };
+    setService(Number(event.target.value));
+    console.log(service);
+    calculateTip();
+    calculateTotal();
+  };
 
   const calculateTip = () => {
-
     let X;
     if (service <= 3) {
       X = 0.15;
@@ -37,26 +39,26 @@ const TipCalculator = () => {
 
     const tipAmount = Number((bill * X).toFixed(2));
     setTip(tipAmount);
-    console.log(tipAmount);
-
+    console.log(tip);
   };
 
   const calculateTotal = () => {
-    const total = bill + tip;
+    const totalAmount = bill + tip;
+    setTotal(totalAmount);
     console.log(total);
-    return total;
   };
+
+  useEffect(() => {
+    calculateTip();
+    calculateTotal();
+  }, [bill, service, calculateTip, calculateTotal]); // Run the effect whenever `bill` or `service` changes
 
   return (
     <div>
       <Header />
       <BillAmount bill={bill} handleBillChange={handleBillChange} />
       <ServiceRating handleServiceChange={handleServiceChange} />
-      <div>
-        <button type="Submit" id="submit" onClick={calculateTotal}>
-          Calculate Total
-        </button>
-      </div>
+      <Total bill={bill} tip={tip} total={total} />
     </div>
   );
 };

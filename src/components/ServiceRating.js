@@ -1,34 +1,47 @@
 import React from "react";
+import Button from "@mui/material/Button";
+import { ThemeProvider } from "@mui/material";
+import ButtonTheme from "../themes/ButtonTheme";
+
 
 const ServiceRating = (props) => {
   const ratings = [
-    { value: 1, label: "1 - Horrible!" },
-    { value: 2, label: "2 - Terrible!" },
-    { value: 3, label: "3 - Bad!" },
-    { value: 4, label: "4 - Not Great!" },
-    { value: 5, label: "5 - Okay!" },
-    { value: 6, label: "6 - Good!" },
-    { value: 7, label: "7 - Very Good!" },
-    { value: 8, label: "8 - Great!" },
-    { value: 9, label: "9 - Excellent!" },
-    { value: 10, label: "10 - Perfect!" },
+    { value: 1, label: "1 - Horrible!", color: "horrible" },
+    { value: 2, label: "2 - Terrible!", color: "terrible" },
+    { value: 3, label: "3 - Bad!", color: "bad" },
+    { value: 4, label: "4 - Not Great!", color: "notgreat" },
+    { value: 5, label: "5 - Okay!", color: "okay" },
+    { value: 6, label: "6 - Good!", color: "good" },
+    { value: 7, label: "7 - Very Good!", color: "verygood" },
+    { value: 8, label: "8 - Great!", color: "great" },
+    { value: 9, label: "9 - Excellent!", color: "excellent" },
+    { value: 10, label: "10 - Perfect!", color: "perfect" },
   ];
 
+const getButtonStyle = (color) => {
+  return {
+    backgroundColor: ButtonTheme.palette[color].main,
+    color: ButtonTheme.palette[color].ContrastText,
+  };
+};
+
   return (
-    <div>
+    <ThemeProvider theme={ButtonTheme}>
       {ratings.map((rating) => (
         <div key={rating.value}>
-          <button
+          <Button
             name="service"
             value={rating.value}
+            variant="contained"
+            style={getButtonStyle(rating.color)}
             onClick={props.handleServiceChange}
           >
             {rating.label}
-          </button>
+          </Button>
         </div>
       ))}
-    </div>
+    </ThemeProvider>
   );
 };
 
-export default ServiceRating;
+export default ServiceRating

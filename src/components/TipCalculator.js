@@ -56,9 +56,9 @@ const TipCalculator = () => {
   return (
     <div>
       <Header />
+      <Total bill={bill} tip={tip} total={total} />
       <BillAmount bill={bill} handleBillChange={handleBillChange} />
       <ServiceRating handleServiceChange={handleServiceChange} />
-      <Total bill={bill} tip={tip} total={total} />
     </div>
   );
 };

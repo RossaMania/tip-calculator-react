@@ -8,10 +8,10 @@ const Header = () => {
     <Card>
       <CardContent>
         <Typography align="center" variant="h1">Tip Calculator</Typography>
-        <Typography align="center" variant="h3">
+        <Typography align="center" variant="h5">
           Rate the service between 1 and 10.
         </Typography>
-        <Typography align="center" variant="h3">
+        <Typography align="center" variant="h5">
           1 being "Horrible" and 10 being "Perfect"!
         </Typography>
       </CardContent>

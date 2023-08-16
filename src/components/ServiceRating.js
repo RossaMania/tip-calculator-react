@@ -1,4 +1,5 @@
 import React from "react";
+import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { ThemeProvider } from "@mui/material";
 import ButtonTheme from "../themes/ButtonTheme";
@@ -27,19 +28,21 @@ const getButtonStyle = (color) => {
 
   return (
     <ThemeProvider theme={ButtonTheme}>
-      {ratings.map((rating) => (
-        <div key={rating.value}>
-          <Button
-            name="service"
-            value={rating.value}
-            variant="contained"
-            style={getButtonStyle(rating.color)}
-            onClick={props.handleServiceChange}
-          >
-            {rating.label}
-          </Button>
-        </div>
-      ))}
+      <Grid container spacing={2} justifyContent="center">
+        {ratings.map((rating) => (
+          <Grid key={rating.value} item s={6}>
+            <Button
+              name="service"
+              value={rating.value}
+              variant="contained"
+              style={getButtonStyle(rating.color)}
+              onClick={props.handleServiceChange}
+            >
+              {rating.label}
+            </Button>
+          </Grid>
+        ))}
+      </Grid>
     </ThemeProvider>
   );
 };

@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# Tip Calculator
+
+## I hate worrying about percentages and that feeling in my gut: Did I under tip? Did I over tip? Did I tip just right? Where did I put the decimal point again?
+
+This Tip Calculator should help put a user's mind at ease. Just enter in the amount of the bill, and then rate your server's service from 1 to 10. 10 being best, and 1 being the worst.
+
+## Features
+- Simple responsive style with Material UI!--large text and colorful buttons!
+- Simple output: bill amount, tip amount, and total right there once you rate your service.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

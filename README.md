@@ -1,3 +1,5 @@
+Thank you for checking out my project! Connect with me on LinkedIn! https://www.linkedin.com/in/ross-clettenberg/
+
 # Tip Calculator
 
 ## I hate worrying about percentages and that feeling in my gut: Did I under tip? Did I over tip? Did I tip just right? Where did I put the decimal point again?
